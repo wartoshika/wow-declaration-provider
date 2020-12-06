@@ -1,16 +1,16 @@
 # WoW Declaration Provider
 
-A program to automaticly fetch information from varous sites
+A program to automatically fetch information from various sites
 to generate Typescript declaration files usable for transpilers.
 
-Since there are so many sites our there with partial documentation
-of the Addon API this project whould close this gap.
+Since there are so many sites our there with only partial documentation
+of the Addon API this project would close this gap.
 
 The idea is to divide the problem of how to get the documentation
 and generate files into the following portions:
 
 1. **Provider**: *Providing data from a single source and put this
-aquired data into a common domain structure*
+acquired data into a common domain structure*
 2. **Reducer**: *The reducer tries to find duplicates and generate
 unique declarations with all available data from each duplicate*
 3. **Generator**: *The generator will render every final declaration
