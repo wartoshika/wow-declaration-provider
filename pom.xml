@@ -31,6 +31,7 @@
         <okhttp.version>4.9.0</okhttp.version>
         <json.version>20201115</json.version>
         <jlua.version>3.0.1</jlua.version>
+        <jsoup.version>1.13.1</jsoup.version>
     </properties>
 
     <modules>

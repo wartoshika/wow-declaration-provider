@@ -1,5 +1,6 @@
 package de.qhun.declaration_provider.generator.typescript.render
 
+import de.qhun.declaration_provider.domain.DataType
 import de.qhun.declaration_provider.domain.ParameterFragment
 import de.qhun.declaration_provider.generator.DeclarationGeneratorOptions
 import de.qhun.declaration_provider.generator.typescript.render.TypescriptDataTypeRenderer.render
@@ -7,7 +8,9 @@ import de.qhun.declaration_provider.generator.typescript.render.TypescriptDataTy
 internal object TypescriptParameterRenderer {
 
     fun ParameterFragment.render(options: DeclarationGeneratorOptions): String {
-        return "$name: ${type.render(options)}"
+        val restParameter = if (type is DataType.TypeUnknown) "..." else ""
+        val restArrray = if (type is DataType.TypeUnknown) "[]" else ""
+        return "$restParameter$name: ${type.render(options)}$restArrray"
     }
 
     fun ParameterFragment.renderComment(options: DeclarationGeneratorOptions): String {

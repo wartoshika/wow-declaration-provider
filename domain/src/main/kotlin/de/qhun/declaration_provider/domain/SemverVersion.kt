@@ -11,22 +11,30 @@ data class SemverVersion(
 
         private val versionRegex = Regex("([0-9]+)\\.?([0-9]+)?\\.?([0-9]+)?\\.?-?(.*)?")
 
-        fun String.toSemverVersion(): SemverVersion {
+        fun String.toSemverVersion(): SemverVersion? {
 
-            var major = 0
-            var minor = 0
-            var patch = 0
-            var build: String? = null
-            versionRegex.find(this)?.groupValues?.let {
-                major = it[1].toInt()
-                minor = it[2].toInt()
-                patch = it[3].toInt()
-                build = it[4]
+            try {
+                var major = 0
+                var minor = 0
+                var patch = 0
+                var build: String? = null
+                versionRegex.find(this)?.groupValues?.let {
+                    major = it[1].toInt()
+                    minor = it[2].toInt()
+                    patch = it[3].toInt()
+                    build = it[4]
+                }
+
+                if (major == 0 && minor == 0 && patch == 0 && build == null) {
+                    return null
+                }
+
+                return SemverVersion(
+                    major, minor, patch, build
+                )
+            } catch (e: Throwable) {
+                return null
             }
-
-            return SemverVersion(
-                major, minor, patch, build
-            )
         }
     }
 

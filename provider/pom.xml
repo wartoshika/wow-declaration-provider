@@ -21,6 +21,7 @@
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <!---->
+        <!-- github provider -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
@@ -35,6 +36,12 @@
             <groupId>org.luaj</groupId>
             <artifactId>luaj-jse</artifactId>
             <version>${jlua.version}</version>
+        </dependency>
+        <!-- gamepedia provider -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>${jsoup.version}</version>
         </dependency>
     </dependencies>
 
