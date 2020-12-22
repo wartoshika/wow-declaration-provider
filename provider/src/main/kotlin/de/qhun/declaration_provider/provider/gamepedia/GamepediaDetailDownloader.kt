@@ -12,20 +12,16 @@ internal object GamepediaDetailDownloader {
 
     suspend fun List<Declaration>.downloadDetails(): List<Declaration> = coroutineScope {
 
-        var counter = 0;
-
         mapChunked(10) {
             when (it) {
                 is FunctionDeclaration -> {
-                    if (counter++ > 10) {
-                        listOf(it)
+
+                    if (it.documentation?.url != null) {
+                        downloadFunctionDetails(it)
                     } else {
-                        if (it.documentation?.url != null) {
-                            downloadFunctionDetails(it)
-                        } else {
-                            listOf(convertToUnknownDocumentationItem(it))
-                        }
+                        listOf(convertToUnknownDocumentationItem(it))
                     }
+
                 }
                 else -> listOf(it)
             }
